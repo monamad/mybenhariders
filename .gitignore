@@ -1,0 +1,100 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Sensitive API keys
+lib/core/networking/api_key.dart
+
+# Generated files
+*.g.dart
+*.freezed.dart
+*.gr.dart
+*.config.dart
+*.part.dart
+**/generated/
+**/generated/**
+
+# Environment variables and configuration
+.env
+.env.local
+.env.production
+.env.development
+.env.*
+config.json
+config/*.json
+secrets.json
+api_keys.json
+
+# Firebase configuration (if using Firebase)
+google-services.json
+GoogleService-Info.plist
+firebase_options.dart
+lib/firebase_options.dart
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Sensitive data files
+lib/core/config/
+lib/core/secrets/
+lib/config/api_keys.dart
+lib/config/secrets.dart
+lib/config/environment.dart
+
+# Android keystore
+*.keystore
+*.jks
+key.properties
+android/key.properties
+android/app/upload-keystore.jks
+android/local.properties
+
+# iOS signing
+ios/Runner/GoogleService-Info.plist
+ios/flutter_export_environment.sh
+
+
