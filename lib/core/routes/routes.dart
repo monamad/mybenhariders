@@ -1,7 +1,7 @@
 class Routes {
   static const String onboardingRoute = '/';
   static const String loginRoute = '/login';
-  static const String mainlayout = '/mainlayout';
+  static const String userMainLayout = '/mainlayout';
 
   //user main layout routes
   static const String homeTab = '/home';

@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mybenhariders/core/routes/routes.dart';
 import '../cubit/google_signin_cubit.dart';
 
 // Example usage in a widget
@@ -15,6 +15,7 @@ class GoogleSignInButton extends StatelessWidget {
           initial: () {},
           loading: () {},
           success: (idToken) {
+            Navigator.pushNamed(context, Routes.userMainLayout);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('تم تسجيل الدخول بنجاح!')),
             );

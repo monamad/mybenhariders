@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mybenhariders/core/di/dependancy_injection.dart';
@@ -12,8 +13,9 @@ import 'package:mybenhariders/features/auth/phone_login/data/repo/success_login_
 
 void main() async {
   await setupGetIt();
-  print('sex');
-  //logintest();
+  if (kDebugMode) {
+    print('sex');
+  }
   runApp(const MyApp());
 }
 
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: AppNavigationService.navigatorKey,
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: Routes.mainlayout,
+        initialRoute: Routes.onboardingRoute,
         title: 'My Benha Riders',
         theme: ThemeData(
           primaryColor: ColorManager.mainOrage,

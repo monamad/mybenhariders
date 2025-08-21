@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -6,10 +8,17 @@ plugins {
 }
 
 // Read local.properties
-val localProperties = java.util.Properties()
+val localProperties = Properties()
 val localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
     localPropertiesFile.inputStream().use { localProperties.load(it) }
+}
+
+// Read keystore properties
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("key.properties")
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
 }
 
 android {
@@ -40,11 +49,21 @@ android {
         manifestPlaceholders["googleMapsApiKey"] = localProperties.getProperty("googleMapsApiKey") ?: "YOUR_API_KEY_HERE"
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+            storeFile = file(keystoreProperties.getProperty("storeFile") ?: "my-release-key.keystore")
+            storePassword = keystoreProperties.getProperty("storePassword")
+        } 
+    }
+
     buildTypes {
+        debug {
+            signingConfig = signingConfigs.getByName("release")
+        }
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")  
         }
     }
 }

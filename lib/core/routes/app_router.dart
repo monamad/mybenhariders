@@ -13,7 +13,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => OnBoardingView());
       case Routes.loginRoute:
         return MaterialPageRoute(builder: (_) => LoginView());
-      case Routes.mainlayout:
+      case Routes.userMainLayout:
         return MaterialPageRoute(
           builder: (_) =>
               MainLayOutView(controller: getIt<MainLayoutController>()),

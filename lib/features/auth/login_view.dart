@@ -17,7 +17,6 @@ class LoginView extends StatelessWidget {
           backgroundColor: Colors.blue,
           foregroundColor: Colors.white,
           scrolledUnderElevation: 0,
-          
         ),
         body: const Center(
           child: Column(

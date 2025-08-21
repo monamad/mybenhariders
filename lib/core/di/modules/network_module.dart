@@ -18,7 +18,7 @@ class NetworkModule {
     getIt.registerLazySingleton<GoogleSignIn>(
       () => GoogleSignIn(
         serverClientId:
-            '726648538508-tr05ii44g5af872nhq922sarmufii55i.apps.googleusercontent.com',
+            '722364989102-to75aj9k5r396b4ounuvjebcjq8b19ld.apps.googleusercontent.com',
         scopes: ['email', 'profile', 'openid'],
       ),
     );

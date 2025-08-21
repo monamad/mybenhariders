@@ -27,7 +27,7 @@ class AppNavigationService {
 
   static Future<void> navigateToMainLayout() async {
     await navigatorKey.currentState?.pushNamedAndRemoveUntil(
-      Routes.mainlayout,
+      Routes.userMainLayout,
       (route) => false,
     );
   }
