@@ -33,7 +33,7 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
             return;
           },
         );
-        emit(GoogleSignInState.success(idToken!));
+        emit(GoogleSignInState.success(idToken));
       },
       error: (message) {
         emit(GoogleSignInState.error(message));
