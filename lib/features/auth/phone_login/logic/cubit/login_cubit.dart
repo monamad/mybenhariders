@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mybenhariders/core/networking/api_result.dart';
 import 'package:mybenhariders/features/auth/phone_login/data/models/login_request_body.dart';
@@ -7,7 +6,7 @@ import 'package:mybenhariders/features/auth/phone_login/data/repo/success_login_
 import 'package:mybenhariders/features/auth/phone_login/logic/cubit/login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final LoginRepo _loginRepo;
+  final LoginWithPhoneRepo _loginRepo;
   LoginCubit(this._loginRepo) : super(LoginState.initial());
 
   void emitLoginStates(LoginRequestBody loginRequestBody) async {

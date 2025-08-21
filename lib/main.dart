@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
 }
 
 void logintest() async {
-  LoginRepo loginRepo = LoginRepo(getIt());
+  LoginWithPhoneRepo loginRepo = LoginWithPhoneRepo(getIt());
 
   ApiResult<SuccessLoginResult> response = await loginRepo.loginWithPhone(
     LoginRequestBody(phoneNumber: '01200000000', password: '01200000000'),
