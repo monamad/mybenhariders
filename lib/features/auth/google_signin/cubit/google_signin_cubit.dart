@@ -19,14 +19,21 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
     emit(GoogleSignInState.loading());
 
     final ApiResult<String?> result = await googleSignInRepo.signInWithGoogle();
-
     result.when(
       success: (idToken) async {
+        print('Google ID Token: $idToken');
+
         final ApiResult<SuccessLoginResult> loginResult =
             await loginWithGoogleRepo.loginWithGoogle({'idToken': idToken!});
         loginResult.when(
           success: (SuccessLoginResult data) {
-            data.when(onboarded: (onboarded) {}, onboarding: (result) {});
+            data.when(
+              onboarded: (onboarded) {
+                print('User onboarded: $onboarded');
+                print('User ID: ${onboarded.accessToken}');
+              },
+              onboarding: (result) {},
+            );
           },
           error: (message) {
             emit(GoogleSignInState.error(message));
@@ -36,6 +43,7 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
         emit(GoogleSignInState.success(idToken));
       },
       error: (message) {
+        print('Google Sign-In Error: $message');
         emit(GoogleSignInState.error(message));
       },
     );
