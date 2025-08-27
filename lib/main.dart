@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: AppNavigationService.navigatorKey,
         onGenerateRoute: AppRouter.generateRoute,
-        initialRoute: Routes.userMainLayout,
+        initialRoute: Routes.onboardingRoute,
         title: 'My Benha Riders',
         theme: ThemeData(
           primaryColor: ColorManager.mainOrage,

@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:mybenhariders/core/local_data_source/get_location.dart';
 import 'package:mybenhariders/core/networking/api_result.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/data/models/auto_complete_request_response.dart';
@@ -35,38 +34,9 @@ class StartTripCubit extends Cubit<StartTripState> {
   ) : super(StartTripState.initial());
 
   void initialize() async {
-    emit(state.copyWith(canAccessLocation: true));
-    startServiceStatusListener();
+    // Remove local location permission handling
+    // The global LocationPermissionCubit will handle all location permissions
     getCurrentLocation();
-  }
-
-  void startServiceStatusListener() async {
-    getLocation.getServiceStatusStream().listen((status) {
-      if (status == ServiceStatus.disabled) {
-        emit(
-          state.copyWith(
-            canAccessLocation: false,
-            locationErrorMessage: 'Location services are disabled.',
-          ),
-        );
-      } else if (status == ServiceStatus.enabled) {
-        emit(state.copyWith(canAccessLocation: true));
-      }
-    });
-  }
-
-  void requestLocationPermission() async {
-    final permission = await GetLocationImpl().requestPermission();
-    if (permission == LocationPermission.deniedForever ||
-        permission == LocationPermission.denied) {
-      emit(state.copyWith(canAccessLocation: false));
-    } else {
-      emit(state.copyWith(canAccessLocation: true));
-    }
-  }
-
-  void openAppSettings() {
-    GetLocationImpl().openAppSettings();
   }
 
   void getCurrentLocation() async {
@@ -79,21 +49,19 @@ class StartTripCubit extends Cubit<StartTripState> {
       return;
     }
 
+    // Fetch current location - permission checking is handled by global cubit
     emit(state.copyWith(getingCurrentLocation: true));
 
-    // Fetch current location
     getLocationRepo.getCurrentLocation().then((result) {
       if (isClosed) return;
 
       result.when(
         success: (locationModel) {
           if (isClosed) return;
-          print(state.currentLocation);
           emit(
             state.copyWith(
               currentLocation: locationModel,
               getingCurrentLocation: false,
-              canAccessLocation: true,
             ),
           );
           setFromLocation(locationModel);
@@ -104,7 +72,6 @@ class StartTripCubit extends Cubit<StartTripState> {
           emit(
             state.copyWith(
               getingCurrentLocation: false,
-              canAccessLocation: false,
               locationErrorMessage: errorMessage,
             ),
           );

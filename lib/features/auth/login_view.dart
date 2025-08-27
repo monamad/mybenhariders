@@ -12,9 +12,10 @@ class LoginView extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<GoogleSignInCubit>(),
       child: Scaffold(
+        backgroundColor: Colors.orange[50],
         appBar: AppBar(
           title: const Text('Google Sign-In'),
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.orange,
           foregroundColor: Colors.white,
           scrolledUnderElevation: 0,
         ),
@@ -22,11 +23,9 @@ class LoginView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AuthenticationStatus(),
               SizedBox(height: 30),
               GoogleSignInButton(),
               SizedBox(height: 20),
-              GoogleSignOutButton(),
             ],
           ),
         ),
