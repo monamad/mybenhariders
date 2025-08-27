@@ -11,6 +11,8 @@ class Routes {
 
   // Home tab routes
   static const String startTrip = '/home/startTrip';
+  static const String selectLocationFromMap =
+      '/home/startTrip/selectLocationFromMap';
 
   // Activities tab routes
   static const String activityDetails = '/activities/details';

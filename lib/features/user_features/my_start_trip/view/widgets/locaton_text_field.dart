@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mybenhariders/core/routes/routes.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/logic/cubit/start_trip_cubit.dart';
 
 class LocatonTextField extends StatelessWidget {
@@ -73,7 +74,7 @@ class LocatonTextField extends StatelessWidget {
               // Loading or Map icon
               Container(
                 padding: EdgeInsets.all(12),
-                child: (state != null && state?.getingCurrentLocation == true)
+                child: (state?.getingCurrentLocation == true)
                     ? SizedBox(
                         width: 24,
                         height: 24,
@@ -85,7 +86,24 @@ class LocatonTextField extends StatelessWidget {
                         ),
                       )
                     : GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          print(
+                            'ssssssssssssssssssssssssssssssssssssssssssssss',
+                          );
+                          print(state!.fromLocation?.name != null);
+                          Navigator.pushNamed(
+                            context,
+                            Routes.selectLocationFromMap,
+                            arguments: {
+                              'initialPosition':
+                                  (hint == 'To' && state!.toLocation != null)
+                                  ? state!.toLocation
+                                  : state!.currentLocation,
+                              'hint': hint,
+                              'startTripCubit': context.read<StartTripCubit>(),
+                            },
+                          );
+                        },
                         child: Icon(
                           Icons.location_on,
                           color: Theme.of(context).primaryColor,

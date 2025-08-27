@@ -10,6 +10,7 @@ import 'package:mybenhariders/features/user_features/home/view/home_view.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/logic/cubit/start_trip_cubit.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/view/my_start_trip_view.dart';
 import 'package:mybenhariders/features/user_features/profile/view/profile_view.dart';
+import 'package:mybenhariders/features/user_features/select_locaton_from_map/view/select_location_from_map_view.dart';
 
 class BottomNavRouter {
   static Route<dynamic> generateHomeRoute(RouteSettings settings) {
@@ -31,6 +32,12 @@ class BottomNavRouter {
             ],
             child: MyStartTripView(),
           ),
+        );
+
+      case Routes.selectLocationFromMap:
+        return MaterialPageRoute(
+          builder: (_) => SelectLocationFromMapView(),
+          settings: settings,
         );
       default:
         return MaterialPageRoute(builder: (_) => HomePage());

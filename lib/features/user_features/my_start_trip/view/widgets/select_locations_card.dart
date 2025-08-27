@@ -55,6 +55,7 @@ class SelectLocationsCard extends StatelessWidget {
                     SizedBox(height: 20.h),
 
                     LocatonTextField(
+                      state: state,
                       textEditingController: context
                           .read<StartTripCubit>()
                           .toLocationController,
@@ -89,7 +90,7 @@ class SelectLocationsCard extends StatelessWidget {
                                 getIconForPlaceType(
                                   suggestion[index].types?.cast<String>(),
                                 ),
-                                color: Colors.grey[600],
+
                                 size: 20,
                               ),
                               title: Text(
@@ -116,9 +117,6 @@ class SelectLocationsCard extends StatelessWidget {
                                 ],
                               ),
                               onTap: () {
-                                print(
-                                  'Tapped on: ${suggestion[index].description}',
-                                );
                                 context.read<StartTripCubit>().stopSearch();
 
                                 context.read<StartTripCubit>().getPlaceDetails(
