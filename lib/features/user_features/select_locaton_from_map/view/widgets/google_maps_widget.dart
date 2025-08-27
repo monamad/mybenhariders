@@ -42,10 +42,7 @@ class GoogleMapsWidget extends StatelessWidget {
     );
   }
 
-  /// Custom map style (optional)
   String? _getMapStyle() {
-    // You can return a custom map style JSON here
-    // For now, return null to use default style
     return null;
   }
 }
