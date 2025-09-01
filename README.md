@@ -1,6 +1,7 @@
 # Benha Riders 🚴‍♂️📍 Ai generated 
 
-This repository contains a demo mobile application developed as part of my training application.  
+This repository contains a demo mobile application can be start point for real app
+ and for me learn ans structure clean architecture app with level of depth developed as part of my training application.  
 **Benha Riders** is a motorcycle ride-hailing app inspired by Uber, designed with Flutter and Google Cloud services.
 
 ---
@@ -16,7 +17,7 @@ This repository contains a demo mobile application developed as part of my train
 
 ---
 
-## 🌍 APIs Used
+## 🌍 APIs Usedand
 - **Google Maps SDK** – to display and interact with the map.  
 - **Google Places API** – for location search and autocomplete suggestions.  
 - **Geocoding API** – to retrieve place names and addresses from coordinates.  
