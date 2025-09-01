@@ -1,48 +1,45 @@
 # Benha Riders 🚴‍♂️📍
 
-Benha Riders is a mobile application similar to Uber but designed for motorcycle rides and local delivery service in Benha.  
-The app allows users to book a motorcycle ride, choose pickup and destination locations, and track the driver in real time.
+This repository contains a demo mobile application developed as part of my training application.  
+**Benha Riders** is a motorcycle ride-hailing app inspired by Uber, designed with Flutter and Google Cloud services.
 
 ---
 
-## ✨ Features
-- **User Authentication** – Sign up / Login with phone number.  
-- **Home Page** – Simple and user-friendly interface.  
-- **Ride Booking**  
-  - Select pickup and destination.  
-  - Search with autocomplete suggestions.  
-  - Choose location directly from the map.  
-- **Map Integration** – Powered by Google Maps for route and location selection.  
-- **Real-time Experience** *(planned)* – Track your ride and driver live.  
+## ✅ What I have implemented
+- **Home Page** – clean and simple design.  
+- **User Registration & Login** – via mobile number.  
+- **Pickup & Destination Selection**  
+  - User can type the location in a search bar.  
+  - Autocomplete suggestions appear (powered by Google Places API).  
+  - Option to pick locations directly from the map.  
+- **Map Integration** – displaying the map and routes using Google Maps SDK.  
+
+---
+
+## 🌍 APIs Used
+- **Google Maps SDK** – to display and interact with the map.  
+- **Google Places API** – for location search and autocomplete suggestions.  
+- **Geocoding API** – to retrieve place names and addresses from coordinates.  
 
 ---
 
 ## 📱 Screenshots
-| Home Page | Sign Up | Select Pickup & Destination |
-|-----------|---------|-----------------------------|
+| Home Page | Registration | Select Pickup & Destination |
+|-----------|--------------|-----------------------------|
 | ![Home](images/home.png) | ![Signup](images/signup.png) | ![Map](images/map.png) |
 
-*(replace `images/...` with the actual path to your screenshots inside the repo)*
+---
+
+## ⚙️ Tools & Technologies
+- **Language/Framework:** Flutter (Dart)  
+- **Cloud Services:** Google Cloud APIs (Maps, Places, Geocoding)  
+- **IDE:** Android Studio  
 
 ---
 
-## 🛠️ Tech Stack
-- **Frontend:** Flutter  
-- **Backend:** Firebase (Authentication, Firestore, Functions)  
-- **Maps & Location:** Google Maps API / Geocoding API  
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-- [Flutter SDK](https://docs.flutter.dev/get-started/install)  
-- Google Maps API key  
-- Firebase project set up  
-
-### Installation
-```bash
-git clone https://github.com/your-username/benha-riders.git
-cd benha-riders
-flutter pub get
-flutter run
+## 🎯 Purpose
+This project was developed as part of my application for training.  
+The goal was to demonstrate the ability to:  
+- Build a mobile app UI/UX with Flutter.  
+- Integrate external APIs (Google Cloud) for maps and location features.  
+- Implement real-world features like location search, suggestions, and map selection.
