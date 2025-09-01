@@ -4,6 +4,7 @@ This repository contains a demo mobile application can be start point for real a
  and for me learn ans structure clean architecture app with level of depth developed as part of my training application.  
 **Benha Riders** is a motorcycle ride-hailing app inspired by Uber, designed with Flutter and Google Cloud services.
 
+
 ---
 
 ## ✅ What I have implemented
@@ -15,6 +16,18 @@ This repository contains a demo mobile application can be start point for real a
   - Option to pick locations directly from the map.  
 - **Map Integration** – displaying the map and routes using Google Maps SDK.  
 
+---
+## 🔗 Backend Integration
+
+Although the backend part of the project was developed by my teammate,  
+I implemented a **large portion of the connection between the app and the backend**, including:
+
+- **Models** – created Dart models to represent the data returned from the backend APIs.  
+- **Repositories** – handled data fetching and communication with the services layer.  
+- **Services** – wrote the logic to call the APIs (using HTTP requests) and process responses.  
+- **Integration** – connected the repositories and services with the UI (Cubit/Provider) so that the app displays real backend data.  
+
+This allowed me to practice **clean architecture** and separation of concerns, while making the app flexible and easier to maintain.
 ---
 
 ## 🌍 APIs Usedand
