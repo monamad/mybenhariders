@@ -1,16 +1,48 @@
-# mybenhariders
+# Benha Riders 🚴‍♂️📍
 
-A new Flutter project.
+Benha Riders is a mobile application similar to Uber but designed for motorcycle rides and local delivery service in Benha.  
+The app allows users to book a motorcycle ride, choose pickup and destination locations, and track the driver in real time.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
+- **User Authentication** – Sign up / Login with phone number.  
+- **Home Page** – Simple and user-friendly interface.  
+- **Ride Booking**  
+  - Select pickup and destination.  
+  - Search with autocomplete suggestions.  
+  - Choose location directly from the map.  
+- **Map Integration** – Powered by Google Maps for route and location selection.  
+- **Real-time Experience** *(planned)* – Track your ride and driver live.  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 📱 Screenshots
+| Home Page | Sign Up | Select Pickup & Destination |
+|-----------|---------|-----------------------------|
+| ![Home](images/home.png) | ![Signup](images/signup.png) | ![Map](images/map.png) |
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*(replace `images/...` with the actual path to your screenshots inside the repo)*
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** Flutter  
+- **Backend:** Firebase (Authentication, Firestore, Functions)  
+- **Maps & Location:** Google Maps API / Geocoding API  
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)  
+- Google Maps API key  
+- Firebase project set up  
+
+### Installation
+```bash
+git clone https://github.com/your-username/benha-riders.git
+cd benha-riders
+flutter pub get
+flutter run
