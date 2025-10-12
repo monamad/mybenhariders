@@ -37,8 +37,6 @@ This allowed me to practice **clean architecture** and separation of concerns, w
 - **Project Api** - For managing app login and flow
 [](Screenshot_2025-09-01-15-43-59-009_com.miui.gallery.jpg)
 ---
-//Screenshot_2025-09-01-15-24-30-967_com.example.mybenhariders.jpg
-//Screenshot_2025-09-01-15-24-13-032_com.example.mybenhariders.jpg
 ## 📱 Screenshots
 
 <!-- Row 1 -->
