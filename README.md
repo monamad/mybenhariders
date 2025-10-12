@@ -13,7 +13,7 @@ This repository contains a demo mobile application that shows my contribution fe
 - **Pickup & Destination Selection**  
   - User can type the location in a search bar.  
   - Autocomplete suggestions appear (powered by Google Places API).  
-  - Option to pick locations directly from the map.  
+  - Option to interactively select locations directly on the map.  
 - **Map Integration** – displaying the map and routes using Google Maps SDK.  
 
 ---
@@ -56,12 +56,4 @@ This allowed me to practice **clean architecture** and separation of concerns, w
 ## ⚙️ Tools & Technologies
 - **Language/Framework:** Flutter (Dart)  
 - **Cloud Services:** Google Cloud APIs (Maps, Places, Geocoding)  
-- **IDE:** Android Studio  
 
--
-## 🎯 Purpose
-This project was developed as part of my application for training.  
-The goal was to demonstrate the ability to:  
-- Build a mobile app UI/UX with Flutter.  
-- Integrate external APIs (Google Cloud) for maps and location features.  
-- Implement real-world features like location search, suggestions, and map selection.
