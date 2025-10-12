@@ -1,15 +1,15 @@
-# Benha Riders 🚴‍♂️📍 Ai generated 
+# Benha Riders Start trip and Google auth feature 🚴‍♂️📍 
 
-This repository contains a demo mobile application can be start point for real app
- and for me learn ans structure clean architecture app with level of depth developed as part of my training application.  
-**Benha Riders** is a motorcycle ride-hailing app inspired by Uber, designed with Flutter and Google Cloud services.
+This repository contains a demo mobile application that shows my contribution features in Benha Riders App
+**Benha Riders** is a motorcycle ride-hailing app inspired by Uber.
 
 
 ---
 
 ## ✅ What I have implemented
+
+- **User Registration & Login** – via mobile number.
 - **Home Page** – clean and simple design.  
-- **User Registration & Login** – via mobile number.  
 - **Pickup & Destination Selection**  
   - User can type the location in a search bar.  
   - Autocomplete suggestions appear (powered by Google Places API).  
@@ -25,27 +25,32 @@ I implemented a **large portion of the connection between the app and the backen
 - **Models** – created Dart models to represent the data returned from the backend APIs.  
 - **Repositories** – handled data fetching and communication with the services layer.  
 - **Services** – wrote the logic to call the APIs (using HTTP requests) and process responses.  
-- **Integration** – connected the repositories and services with the UI (Cubit/Provider) so that the app displays real backend data.  
+- **Integration** – connected the repositories and services with the UI (Cubit) so that the app displays real backend data.  
 
 This allowed me to practice **clean architecture** and separation of concerns, while making the app flexible and easier to maintain.
 ---
 
-## 🌍 APIs Usedand
+## 🌍 APIs Used
 - **Google Maps SDK** – to display and interact with the map.  
 - **Google Places API** – for location search and autocomplete suggestions.  
-- **Geocoding API** – to retrieve place names and addresses from coordinates.  
+- **Geocoding API** – to retrieve place names and addresses from coordinates.
+- **Project Api** - For managing app login and flow
 [](Screenshot_2025-09-01-15-43-59-009_com.miui.gallery.jpg)
 ---
-
+//Screenshot_2025-09-01-15-24-30-967_com.example.mybenhariders.jpg
+//Screenshot_2025-09-01-15-24-13-032_com.example.mybenhariders.jpg
 ## 📱 Screenshots
-| Home Page | Registration | Select Pickup & Destination |
-| Home Page | Signup | Map | Start Trip |
-|-----------|--------|-----|------------|
-| ![Home](Screenshot_2025-09-01-15-24-30-967_com.example.mybenhariders.jpg) | ![Signup](Screenshot_2025-09-01-15-24-22-541_com.example.mybenhariders.jpg) | ![Map](Screenshot_2025-09-01-15-24-23-032_com.example.mybenhariders.jpg) | ![Start Trip](Screenshot_2025-09-01-15-24-45-299_com.example.mybenhariders.jpg) |
 
-| Searching | Suggestions | Ride Confirm |
-|-----------|-------------|--------------|
-| ![Search](Screenshot_2025-09-01-15-24-49-161_com.example.mybenhariders.jpg) | ![Suggestions](Screenshot_2025-09-01-15-39-38-459_com.example.mybenhariders.jpg) | ![Confirm](Screenshot_2025-09-01-15-39-59-009_com.miui.gallery.jpg) |
+<!-- Row 1 -->
+| Registration | Home Page  | Select Pickup & Destination | 
+|---------------|----------|-------------------------------|
+| ![Registration](Screenshot_2025-09-01-15-39-38-459_com.example.mybenhariders.jpg) |  ![Home Page](Screenshot_2025-09-01-15-24-13-032_com.example.mybenhariders.jpg) |![Select Pickup & Destination](Screenshot_2025-09-01-15-24-49-161_com.example.mybenhariders.jpg) | 
+
+<!-- Row 2 -->
+|Suggestions |Select in Map |
+|------------|--------------|
+ | ![Suggestions](Screenshot_2025-09-01-15-24-45-299_com.example.mybenhariders.jpg) | ![Select in Map](Screenshot_2025-09-01-15-24-30-967_com.example.mybenhariders.jpg)|
+
 ---
 
 ## ⚙️ Tools & Technologies
