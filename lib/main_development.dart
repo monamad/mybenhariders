@@ -23,7 +23,7 @@ void main() async {
     ),
   );
   await setupGetIt();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env.development");
   if (kDebugMode) {}
   runApp(const MyApp());
 }
