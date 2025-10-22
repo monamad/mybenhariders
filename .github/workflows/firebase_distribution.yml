@@ -30,6 +30,16 @@ jobs:
       
       - name: Install dependencies
         run: flutter pub get
+      - name: Create local.properties
+        run: |
+          echo "googleMapsApiKey=${{ secrets.GOOGLE_MAPS_API_KEY }}" > android/local.properties
+      
+      - name: Create .env file
+        run: | 
+          echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY_PROD }}" > .env.production
+            
+      - name: Run build_runner
+        run: dart run build_runner build --delete-conflicting-outputs
       
       - name: Build APK (Prod)
         run: flutter build apk --release --flavor production -t lib/main_production.dart

@@ -15,7 +15,7 @@ import 'package:mybenhariders/features/auth/phone_login/data/repo/success_login_
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupGetIt();
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env.production");
   if (kDebugMode) {
     print('sex');
   }
