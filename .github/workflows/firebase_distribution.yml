@@ -46,17 +46,15 @@ jobs:
       
       - name: Install dependencies
         run: flutter pub get
-      - name: Create local.properties
-        run: |
-          echo "googleMapsApiKey=${{ secrets.GOOGLE_MAPS_API_KEY }}" > android/local.properties
-      
       - name: Create .env file
         run: | 
-          echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY_PROD }}" > .env.production
+          echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_MAPS_API_KEY }}" > .env.production
+          echo "" > .env.development
           
       - name: Create google-services.json
         run: |
           echo '${{ secrets.FIREBASE_JSON }}' > android/app/google-services.json
+          
           
       - name: Check google-services.json
         run: cat android/app/google-services.json

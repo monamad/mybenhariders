@@ -23,7 +23,13 @@ void main() async {
     ),
   );
   await setupGetIt();
-  await dotenv.load(fileName: ".env.development");
+  try {
+    await dotenv.load(fileName: ".env.development");
+  } catch (e) {
+    if (kDebugMode) {
+      print('Warning: .env.development not found: $e');
+    }
+  }
   if (kDebugMode) {}
   runApp(const MyApp());
 }
