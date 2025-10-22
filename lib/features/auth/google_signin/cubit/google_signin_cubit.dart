@@ -14,7 +14,7 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   final GoogleSignInRepo googleSignInRepo;
   final LoginWithGoogleRepo loginWithGoogleRepo;
   GoogleSignInCubit(this.googleSignInRepo, this.loginWithGoogleRepo)
-    : super(GoogleSignInState._initial());
+    : super(GoogleSignInState.initial());
 
   Future<void> signInWithGoogle() async {
     print('done22222');
@@ -52,6 +52,6 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   Future<void> signOut() async {
     await googleSignInRepo.signOut();
     await TokenStorageService.clearTokens();
-    emit(GoogleSignInState._initial());
+    emit(GoogleSignInState.initial());
   }
 }

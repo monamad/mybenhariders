@@ -1,5 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:mybenhariders/core/networking/api_key.dart' as ApiConstants;
+import 'package:mybenhariders/core/networking/api_constants.dart';
 import 'package:mybenhariders/core/networking/google_places_service.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/data/models/location_model.dart';
 

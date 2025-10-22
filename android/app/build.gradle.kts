@@ -2,6 +2,9 @@ import java.util.Properties
 
 plugins {
     id("com.android.application")
+    // START: FlutterFire Configuration
+    id("com.google.gms.google-services")
+    // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
@@ -64,6 +67,26 @@ android {
         }
         release {
             signingConfig = signingConfigs.getByName("release")  
+        }
+    }
+    flavorDimensions += "default"   
+    productFlavors {
+        create("development") {
+            dimension = "default" 
+             resValue(
+                type = "string",
+                name = "app_name",
+                value = "Flavors development")
+            applicationIdSuffix = ".development"
+            
+        }
+        create("production") {
+            dimension = "default"
+             resValue(
+                type = "string",
+                name = "app_name",
+                value = "Flavors production")
+            applicationIdSuffix = ".production"
         }
     }
 }
