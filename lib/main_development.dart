@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mybenhariders/core/di/dependancy_injection.dart';
 import 'package:mybenhariders/core/networking/api_result.dart';
@@ -12,10 +14,17 @@ import 'package:mybenhariders/features/auth/phone_login/data/repo/login_repo.dar
 import 'package:mybenhariders/features/auth/phone_login/data/repo/success_login_result.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.green,
+      systemNavigationBarColor: Colors.red,
+      statusBarIconBrightness: Brightness.dark,
+    ),
+  );
   await setupGetIt();
-  if (kDebugMode) {
-    print('sex');
-  }
+  await dotenv.load(fileName: ".env");
+  if (kDebugMode) {}
   runApp(const MyApp());
 }
 
@@ -35,7 +44,6 @@ class MyApp extends StatelessWidget {
           primaryColor: ColorManager.mainOrage,
           scaffoldBackgroundColor: Colors.white,
         ),
-        // Remove home property to use routing system
       ),
     );
   }

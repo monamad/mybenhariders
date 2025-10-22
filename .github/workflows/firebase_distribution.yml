@@ -1,0 +1,78 @@
+name: Build and Deploy to Firebase
+
+on:
+  push:
+    branches:
+      - main
+      - develop  
+
+jobs:
+  build-dev:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Build APK (Dev)
+        run: flutter build apk --release --flavor dev
+      
+      - name: Upload to Firebase (Dev)
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_DEV }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers-dev
+          file: build/app/outputs/flutter-apk/app-dev-release.apk
+          releaseNotes: "Dev Build - ${{ github.sha }}"
+
+  build-prod:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Build APK (Prod)
+        run: flutter build apk --release --flavor prod
+      
+      - name: Upload to Firebase (Prod)
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID_PROD }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers-prod
+          file: build/app/outputs/flutter-apk/app-prod-release.apk
+          releaseNotes: "Production Build - ${{ github.sha }}"

@@ -21,31 +21,63 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
   }
 
   void initialize() async {
+    startServiceStatusListener();
+    await checkServiceStatus();
     checkLocationStatus();
   }
 
-  void checkLocationStatus() async {
-    emit(state.copyWith(errorType: LocationErrorType.loading));
+  Future<void> checkServiceStatus() async {
+    bool isLocationServiceEnabled = await getLocation
+        .isLocationServiceEnabled();
+    if (!isLocationServiceEnabled) {
+      emit(
+        state.copyWith(
+          errorType: LocationErrorType.serviceDisabled,
+          errorMessage: 'Location services are disabled. Please enable GPS.',
+        ),
+      );
+    }
+  }
 
-    try {
-      final serviceEnabled = await getLocation.isLocationServiceEnabled();
-      if (!serviceEnabled) {
+  void startServiceStatusListener() async {
+    getLocation.getServiceStatusStream().listen((status) {
+      if (status == ServiceStatus.disabled) {
         emit(
           state.copyWith(
             errorType: LocationErrorType.serviceDisabled,
             errorMessage: 'Location services are disabled. Please enable GPS.',
           ),
         );
-        return;
+      } else if (status == ServiceStatus.enabled) {
+        emit(state.copyWith(errorType: LocationErrorType.loading));
+        checkLocationStatus();
       }
+    });
+  }
+
+  void checkLocationStatus() async {
+    if (isClosed) return;
+    if (state.errorType == LocationErrorType.serviceDisabled) return;
+    emit(state.copyWith(errorType: LocationErrorType.loading));
+    try {
       final permission = await getLocation.checkPermission();
-      if (permission == LocationPermission.denied) {
-        emit(
-          state.copyWith(
-            errorType: LocationErrorType.permissionDenied,
-            errorMessage: 'Location permission denied. Enable in settings.',
-          ),
-        );
+      // Fix the logic: use AND instead of OR
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        final newPermission = await getLocation.requestPermission();
+        if (newPermission == LocationPermission.denied ||
+            newPermission == LocationPermission.deniedForever) {
+          emit(
+            state.copyWith(
+              errorType: LocationErrorType.permissionDenied,
+              errorMessage: 'Location permission denied. Enable in settings.',
+            ),
+          );
+        } else {
+          emit(
+            state.copyWith(errorType: LocationErrorType.none, errorMessage: ''),
+          );
+        }
       } else {
         emit(
           state.copyWith(errorType: LocationErrorType.none, errorMessage: ''),
@@ -65,7 +97,7 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
     emit(state.copyWith(errorMessage: message));
   }
 
-  void requestPermission() async {
+  Future<void> requestPermission() async {
     emit(state.copyWith(errorType: LocationErrorType.loading));
 
     await getLocation.requestPermission();
@@ -84,7 +116,6 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
 
   void _startPermissionCheckTimer() {
     _permissionCheckTimer?.cancel();
-
     _permissionCheckTimer = Timer.periodic(const Duration(seconds: 2), (
       timer,
     ) async {

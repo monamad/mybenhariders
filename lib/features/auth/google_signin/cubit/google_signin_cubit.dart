@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mybenhariders/core/networking/api_result.dart';
+import 'package:mybenhariders/core/local_data_source/token_storage_service.dart';
 
 import 'package:mybenhariders/features/auth/google_signin/data/repo/google_signin_repo.dart';
 import 'package:mybenhariders/features/auth/google_signin/data/repo/login_with_google_repo.dart';
@@ -16,21 +17,20 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
     : super(GoogleSignInState.initial());
 
   Future<void> signInWithGoogle() async {
-    emit(GoogleSignInState.loading());
-
+    print('done22222');
     final ApiResult<String?> result = await googleSignInRepo.signInWithGoogle();
     result.when(
       success: (idToken) async {
-        print('Google ID Token: $idToken');
-
+        // Store the Google ID token
+        await TokenStorageService.storeGoogleToken(idToken!);
+        print('done1');
         final ApiResult<SuccessLoginResult> loginResult =
-            await loginWithGoogleRepo.loginWithGoogle({'idToken': idToken!});
+            await loginWithGoogleRepo.loginWithGoogle({'idToken': idToken});
         loginResult.when(
           success: (SuccessLoginResult data) {
             data.when(
               onboarded: (onboarded) {
-                print('User onboarded: $onboarded');
-                print('User ID: ${onboarded.accessToken}');
+                TokenStorageService.storeAccessToken(onboarded.accessToken);
               },
               onboarding: (result) {},
             );
@@ -50,8 +50,8 @@ class GoogleSignInCubit extends Cubit<GoogleSignInState> {
   }
 
   Future<void> signOut() async {
-    emit(GoogleSignInState.loading());
     await googleSignInRepo.signOut();
+    await TokenStorageService.clearTokens();
     emit(GoogleSignInState.initial());
   }
 }

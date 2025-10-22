@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mybenhariders/features/check_location_perrmissions/logic/cubit/location_permission_cubit.dart';
-import 'package:mybenhariders/features/check_location_perrmissions/view/location_permission_error_view.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/logic/cubit/start_trip_cubit.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/view/widgets/current_location_button.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/view/widgets/select_locations_card.dart';
 import 'package:mybenhariders/features/user_features/my_start_trip/view/widgets/start_trip_button.dart';
+import 'package:mybenhariders/features/check_location_perrmissions/logic/cubit/location_permission_cubit.dart';
 
 class MyStartTripView extends StatelessWidget {
   const MyStartTripView({super.key});
@@ -28,11 +27,9 @@ class MyStartTripView extends StatelessWidget {
 
       body: BlocBuilder<StartTripCubit, StartTripState>(
         builder: (context, startTripState) {
-          if (startTripState.canAccessLocation == true) {
-            return _buildTripContent(context);
-          }
-          context.read<LocationPermissionCubit>().initialize();
-          return LocationPermissionErrorView();
+          // The global overlay will handle all location permission errors
+          // So we can just show the trip content
+          return _buildTripContent(context);
         },
       ),
     );
@@ -54,6 +51,8 @@ class MyStartTripView extends StatelessWidget {
           const SizedBox(height: 10),
           CurrentLocationButton(
             onPressed: () {
+              // Trigger location permission check before getting current location
+              context.read<LocationPermissionCubit>().checkLocationStatus();
               context.read<StartTripCubit>().getCurrentLocation();
             },
             isLoading: startTripState.getingCurrentLocation,
