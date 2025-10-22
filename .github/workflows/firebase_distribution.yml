@@ -37,8 +37,13 @@ jobs:
       - name: Create .env file
         run: | 
           echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY_PROD }}" > .env.production
+          
       - name: Create google-services.json
-        run: echo "$FIREBASE_JSON" > android/app/google-services.json
+        run: |
+          echo '${{ secrets.FIREBASE_JSON }}' > android/app/google-services.json
+          
+      - name: Check google-services.json
+        run: cat android/app/google-services.json
             
       - name: Run build_runner
         run: dart run build_runner build --delete-conflicting-outputs
