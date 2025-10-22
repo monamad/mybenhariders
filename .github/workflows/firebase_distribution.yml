@@ -74,4 +74,4 @@ jobs:
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: app tester
           file: build/app/outputs/flutter-apk/app-production-release.apk
-          releaseNotes: "Production Build - ${{ github.sha }}"
+          releaseNotesFile: release-notes.txt
