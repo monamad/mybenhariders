@@ -73,5 +73,10 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID_PROD }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: app tester
+<<<<<<< HEAD
           file: build/app/outputs/flutter-apk/app-prod-release.apk
           releaseNotes: "Production Build - ${{ github.sha }}"
+=======
+          file: build/app/outputs/flutter-apk/app-production-release.apk
+          releaseNotes: "Production Build - ${{ github.sha }}"
+>>>>>>> feature/select-locaton-from-map
